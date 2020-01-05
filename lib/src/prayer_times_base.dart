@@ -39,8 +39,7 @@ class PrayerTimes {
     var parameters = {
       "latitude": latitude.toString(),
       "longitude": longitude.toString(),
-      "method": method.index.toString(),
-      "tune": '0,0,0,0,0,0' // TODO: implement more parameters
+      "method": method.index.toString()
     };
     
     http.Response response = await http.get(
@@ -53,7 +52,7 @@ class PrayerTimes {
   }
 
   String getEndpoint() {
-    return '/v1/timings/${date.millisecondsSinceEpoch}';
+    return '/v1/timings/${date.millisecondsSinceEpoch/1000}';
   }
 
   Map<Timings, DateTime> convertFromStringMap(Map<String, dynamic> decode) {
